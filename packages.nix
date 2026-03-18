@@ -7,6 +7,7 @@
     git
     firefox
     wtype
+    nvd
     
    # Moderni CLI alati (Rust alternative)
     eza         
@@ -16,7 +17,7 @@
     bottom  
     zoxide 
     fzf   
-wl-clipboard
+    wl-clipboard
 
     # Sway dodaci
     foot

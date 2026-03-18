@@ -20,4 +20,14 @@
 
   # Swap
   swapDevices = [ { device = "/var/lib/swapfile"; size = 16384; } ];
+
+  # Automatski Garbage Collector (briše generacije starije od 7 dana)
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
+
+  # Magični trik za štednju prostora (Hardlinkovanje identičnih fajlova)
+  nix.settings.auto-optimise-store = true;
 }
