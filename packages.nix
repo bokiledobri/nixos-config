@@ -8,6 +8,7 @@
     firefox
     wtype
     nvd
+    neovide
     
    # Moderni CLI alati (Rust alternative)
     eza         
