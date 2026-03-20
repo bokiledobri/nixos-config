@@ -9,6 +9,15 @@
     wtype
     nvd
     neovide
+
+   # Graficki alati
+    inkscape
+    imagemagick
+    krita
+    scribus
+    ghostscript
+    graphicsmagick
+    gawk
     
    # Moderni CLI alati (Rust alternative)
     eza         
