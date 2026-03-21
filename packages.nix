@@ -49,6 +49,9 @@
     go
     nodejs
     python3
+    gcc
+    gnumake
+    tree-sitter
     
     # Kodeci
     gst_all_1.gstreamer
