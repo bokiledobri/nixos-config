@@ -18,6 +18,10 @@
     ghostscript
     graphicsmagick
     gawk
+    vips
+
+   # Python
+    python3Packages.pyvips
     
    # Moderni CLI alati (Rust alternative)
     eza         
