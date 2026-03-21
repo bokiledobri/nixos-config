@@ -9,6 +9,7 @@
     wtype
     nvd
     neovide
+    emacs
 
    # Graficki alati
     inkscape
