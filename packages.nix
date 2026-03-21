@@ -28,6 +28,7 @@
     zoxide 
     fzf   
     wl-clipboard
+    unzip
 
     # Sway dodaci
     foot
