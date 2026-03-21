@@ -22,7 +22,9 @@
 
    # Python
     python3Packages.pyvips
-    
+    pyright
+    ruff
+
    # Moderni CLI alati (Rust alternative)
     eza         
     bat        
