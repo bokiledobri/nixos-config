@@ -36,6 +36,7 @@
     fzf   
     wl-clipboard
     unzip
+    just
 
     # Sway dodaci
     foot
