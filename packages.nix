@@ -26,7 +26,7 @@
     pyright
     ruff
 
-   # Moderni CLI alati (Rust alternative)
+   # Moderni CLI alati 
     eza         
     bat        
     fd        
@@ -37,6 +37,7 @@
     wl-clipboard
     unzip
     just
+    neofetch
 
     # Sway dodaci
     foot
