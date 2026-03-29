@@ -44,6 +44,7 @@
     wofi
     i3status
     swaybg
+    waybar
 
     # Programski jezici
     elixir

@@ -5,6 +5,7 @@
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
   programs.sway.enable = true;
+  programs.river.enable = true;
 
   # Tastatura
   services.xserver.xkb = {
