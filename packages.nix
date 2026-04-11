@@ -10,6 +10,7 @@
     nvd
     neovide
     emacs
+    vscode-fhs
 
    # Graficki alati
     inkscape
