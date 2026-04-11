@@ -9,6 +9,7 @@
     wtype
     nvd
     neovide
+    inotify-tools
     emacs
     vscode-fhs
 
