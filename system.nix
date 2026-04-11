@@ -28,6 +28,12 @@
     options = "--delete-older-than 7d";
   };
 
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true; # Dozvoljava ti da koristiš 'docker' i 'docker-compose' komande
+  };
+  environment.systemPackages = [ pkgs.docker-compose ];
+
   # Magični trik za štednju prostora (Hardlinkovanje identičnih fajlova)
   nix.settings.auto-optimise-store = true;
 }

@@ -11,6 +11,7 @@
     ./desktop.nix
     ./users.nix
     ./packages.nix
+    ./services.nix
   ];
 
   # Globalne varijable
