@@ -27,6 +27,7 @@
     ruff
 
    # Moderni CLI alati 
+    gemini-cli
     eza         
     bat        
     fd        
