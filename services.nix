@@ -19,4 +19,9 @@ services.postgresql = {
       host   all       all   ::1/128      trust
     '';
   };
+  # Fix za Gemini Code Assist (Google-ov kod ne ume sam da kreira temp folder)
+  systemd.tmpfiles.rules = [
+    "d /tmp/gemini 0777 root root -"
+    "d /tmp/gemini/ide 0777 root root -"
+  ];
 }
