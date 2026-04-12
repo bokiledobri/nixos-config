@@ -30,7 +30,7 @@
     ruff
 
    # Moderni CLI alati 
-    gemini-cli
+    bun
     eza         
     bat        
     fd        
