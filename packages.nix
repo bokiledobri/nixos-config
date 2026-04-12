@@ -12,7 +12,7 @@
     inotify-tools
     emacs
     vscode-fhs
-    pkgs.docker-compose
+    podman-compose
 
    # Graficki alati
     inkscape
