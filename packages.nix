@@ -12,6 +12,7 @@
     inotify-tools
     emacs
     vscode-fhs
+    pkgs.docker-compose
 
    # Graficki alati
     inkscape

@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
 services.postgresql = {
-    enable = true;
+    enable = false;
     
     # 1. ZAKUCAVANJE VERZIJE (Ključna linija)
     # Možeš izabrati postgresql_14, 15 ili 16. Šta god staviš, tu ostaje zauvek.
@@ -18,6 +18,10 @@ services.postgresql = {
       host   all       all   127.0.0.1/32 trust
       host   all       all   ::1/128      trust
     '';
+  };
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true; # Dozvoljava ti da koristiš 'docker' i 'docker-compose' komande
   };
   # Fix za Gemini Code Assist (Google-ov kod ne ume sam da kreira temp folder)
   systemd.tmpfiles.rules = [
