@@ -13,6 +13,7 @@
     emacs
     vscode-fhs
     podman-compose
+    zoom-us
 
    # Graficki alati
     inkscape

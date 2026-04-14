@@ -12,6 +12,6 @@
   users.users.gaga = {
     isNormalUser = true;
     description = "Gaga";
-    extraGroups = [ "networkmanager" "video" "audio" ];
+    extraGroups = [ "networkmanager" "video" "audio" "wheel"];
   };
 }

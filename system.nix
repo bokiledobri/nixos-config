@@ -36,4 +36,6 @@
 
   # Magični trik za štednju prostora (Hardlinkovanje identičnih fajlova)
   nix.settings.auto-optimise-store = true;
+  # Omogući binarne programe van nix ekosistema
+  programs.nix-ld.enable = true;
 }
