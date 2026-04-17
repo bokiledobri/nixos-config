@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
 services.postgresql = {
-    enable = false;
+    enable = true;
     
     # 1. ZAKUCAVANJE VERZIJE (Ključna linija)
     # Možeš izabrati postgresql_14, 15 ili 16. Šta god staviš, tu ostaje zauvek.
