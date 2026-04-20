@@ -43,6 +43,7 @@
     unzip
     just
     neofetch
+    tmux
 
     # Sway dodaci
     foot
