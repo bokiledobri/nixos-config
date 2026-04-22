@@ -44,6 +44,7 @@
     just
     neofetch
     tmux
+    gigalixir
 
     # Sway dodaci
     foot
