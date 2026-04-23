@@ -23,6 +23,9 @@ services.postgresql = {
     enable = true;
     port = 6379;
   };
+  services.ollama = {
+    enable = true;
+  };
   virtualisation.podman = {
     enable = true;
     dockerCompat = true; # Dozvoljava ti da koristiš 'docker' i 'docker-compose' komande

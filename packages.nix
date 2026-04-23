@@ -16,6 +16,7 @@
     zoom-us
     sqlite
     redis
+    rclone
 
    # Graficki alati
     inkscape
