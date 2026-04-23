@@ -19,6 +19,10 @@ services.postgresql = {
       host   all       all   ::1/128      trust
     '';
   };
+  services.redis.servers.main = {
+    enable = true;
+    port = 6379;
+  };
   virtualisation.podman = {
     enable = true;
     dockerCompat = true; # Dozvoljava ti da koristiš 'docker' i 'docker-compose' komande

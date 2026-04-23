@@ -15,6 +15,7 @@
     podman-compose
     zoom-us
     sqlite
+    redis
 
    # Graficki alati
     inkscape
