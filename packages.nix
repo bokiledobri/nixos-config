@@ -14,6 +14,7 @@
     vscode-fhs
     podman-compose
     zoom-us
+    sqlite
 
    # Graficki alati
     inkscape
