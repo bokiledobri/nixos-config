@@ -30,6 +30,25 @@ services.postgresql = {
     enable = true;
     dockerCompat = true; # Dozvoljava ti da koristiš 'docker' i 'docker-compose' komande
   };
+  systemd.services.backup-debug-memory = {
+    description = "Sync Vector DB to Google Drive via Rclone";
+    serviceConfig = {
+      Type = "oneshot";
+      # Pazi na apsolutne putanje! Prilagodi putanju do foldera gde ćeš čuvati bazu.
+      # Takođe, eksplicitno mu dajemo putanju do rclone config fajla tvog korisnika.
+      ExecStart = "${pkgs.rclone}/bin/rclone --config /home/bojan/.config/rclone/rclone.conf copy /home/bojan/workspace/debug_baza gdrive:DebugMemory";
+      User = "bojan";
+    };
+  };
+
+  systemd.timers.backup-debug-memory = {
+    description = "Timer for Vector DB Backup";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "*-*-* 03:00:00"; # Pokreće se svako jutro u 3:00 AM
+      Persistent = true;             # Ako je komp bio ugašen u 3 AM, uradiće bekap čim ga upališ
+    };
+};
   # Fix za Gemini Code Assist (Google-ov kod ne ume sam da kreira temp folder)
   systemd.tmpfiles.rules = [
     "d /tmp/gemini 0777 root root -"
