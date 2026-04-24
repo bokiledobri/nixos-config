@@ -36,7 +36,7 @@ services.postgresql = {
       Type = "oneshot";
       # Pazi na apsolutne putanje! Prilagodi putanju do foldera gde ćeš čuvati bazu.
       # Takođe, eksplicitno mu dajemo putanju do rclone config fajla tvog korisnika.
-      ExecStart = "${pkgs.rclone}/bin/rclone --config /home/bojan/.config/rclone/rclone.conf copy /home/bojan/workspace/debug_baza gdrive:DebugMemory";
+      ExecStart = "${pkgs.rclone}/bin/rclone --config /home/bojan/.config/rclone/rclone.conf copy /home/bojan/.rag/rag.sqlite gdrive:DebugMemory";
       User = "bojan";
     };
   };

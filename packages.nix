@@ -17,6 +17,7 @@
     sqlite
     redis
     rclone
+    aider-chat
 
    # Graficki alati
     inkscape
