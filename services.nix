@@ -43,7 +43,7 @@ services.postgresql = {
     description = "Timer for Vector DB Backup";
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnCalendar = "*-*-*22:28:00"; # Pokreće se svako jutro u 3:00 AM
+      OnCalendar = "*-*-*22:30:00"; # Pokreće se svako jutro u 3:00 AM
       Persistent = true;             # Ako je komp bio ugašen u 3 AM, uradiće bekap čim ga upališ
     };
 };
