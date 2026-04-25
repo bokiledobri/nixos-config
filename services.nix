@@ -34,9 +34,7 @@ services.postgresql = {
     description = "Sync Vector DB to Google Drive via Rclone";
     serviceConfig = {
       Type = "oneshot";
-      # Pazi na apsolutne putanje! Prilagodi putanju do foldera gde ćeš čuvati bazu.
-      # Takođe, eksplicitno mu dajemo putanju do rclone config fajla tvog korisnika.
-      ExecStart = "${pkgs.rclone}/bin/rclone --config /home/bojan/.config/rclone/rclone.conf copy /home/bojan/.rag/rag.sqlite gdrive:DebugMemory";
+      ExecStart = "/nix/store/9iv8zx2ldjmahwzdhhma25psfdgxzyxq-system-path/bin/rclone --config /home/bojan/.config/rclone/rclone.conf copy /home/bojan/.rag/rag.sqlite gdrive:/";
       User = "bojan";
     };
   };
@@ -45,7 +43,7 @@ services.postgresql = {
     description = "Timer for Vector DB Backup";
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnCalendar = "*-*-* 03:00:00"; # Pokreće se svako jutro u 3:00 AM
+      OnCalendar = "*-*-*22:22:00"; # Pokreće se svako jutro u 3:00 AM
       Persistent = true;             # Ako je komp bio ugašen u 3 AM, uradiće bekap čim ga upališ
     };
 };
