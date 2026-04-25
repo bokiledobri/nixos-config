@@ -34,7 +34,7 @@ services.postgresql = {
     description = "Sync Vector DB to Google Drive via Rclone";
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "/nix/store/9iv8zx2ldjmahwzdhhma25psfdgxzyxq-system-path/bin/rclone --config /home/bojan/.config/rclone/rclone.conf copy /home/bojan/.rag/rag.sqlite gdrive:/";
+      ExecStart = "${pkgs.rclone}/bin/rclone --config /home/bojan/.config/rclone/rclone.conf copy /home/bojan/.rag/rag.sqlite gdrive:/";
       User = "bojan";
     };
   };
@@ -43,8 +43,8 @@ services.postgresql = {
     description = "Timer for Vector DB Backup";
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnCalendar = "*-*-*22:30:00"; # Pokreće se svako jutro u 3:00 AM
-      Persistent = true;             # Ako je komp bio ugašen u 3 AM, uradiće bekap čim ga upališ
+      OnCalendar = "*-*-* 22:40:00"; 
+      Persistent = true;            
     };
 };
   # Fix za Gemini Code Assist (Google-ov kod ne ume sam da kreira temp folder)
