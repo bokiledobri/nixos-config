@@ -49,6 +49,7 @@
     neofetch
     tmux
     gigalixir
+    bubblewrap
 
     # Sway dodaci
     foot
