@@ -39,7 +39,7 @@ services.postgresql = {
       # Safely snapshot the SQLite database
       sqlite3 /home/bojan/.rag/rag.db ".backup /tmp/rag-backup.db"
       # Sync to Google Drive
-      rclone --config /home/bojan/.config/rclone/rclone.conf copy /tmp/rag-backup.db gdrive:/
+      rclone --config /home/bojan/.config/rclone/rclone.conf copy /tmp/rag-backup.db gdrive:/backups
       # Cleanup
       rm /tmp/rag-backup.db
     '';
