@@ -30,42 +30,34 @@ services.postgresql = {
     enable = true;
     dockerCompat = true; # Dozvoljava ti da koristiš 'docker' i 'docker-compose' komande
   };
-       systemd.services.backup-debug-memory = {
-         description = "Sync Vector DB to Google Drive via Rclone";
-    
-        wants = [ "network-online.target" ];
-        after = [ "network-online.target" ];
-   
-       path = with pkgs; [ rclone sqlite ];
-  
-      script = ''
-        # 1. Corrected filename to rag.db
-        # 2. Safely snapshot the SQLite database
-        sqlite3 /home/bojan/.rag/rag.db ".backup /tmp/rag-backup.db"
- 
-       # 3. Added --non-interactive to prevent hanging on auth prompts
-       rclone --config /home/bojan/.config/rclone/rclone.conf \
---non-interactive \
-copy /tmp/rag-backup.db gdrive:/
+  systemd.services.backup-debug-memory = {
+    description = "Sync Vector DB to Google Drive via Rclone";
+    wants = [ "network-online.target" ];
+    after = [ "network-online.target" ];
+    path = with pkgs; [ rclone sqlite ];
+    script = ''
+      # Safely snapshot the SQLite database
+      sqlite3 /home/bojan/.rag/rag.db ".backup /tmp/rag-backup.db"
+      # Sync to Google Drive
+      rclone --config /home/bojan/.config/rclone/rclone.conf --non-interactive copy /tmp/rag-backup.db gdrive:/
+      # Cleanup
+      rm /tmp/rag-backup.db
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      User = "bojan";
+      Environment = "HOME=/home/bojan";
+    };
+  };
 
-rm /tmp/rag-backup.db
-'';
-
-serviceConfig = {
-Type = "oneshot";
-User = "bojan";
-Environment = "HOME=/home/bojan";
-};
-};
-
-systemd.timers.backup-debug-memory = {
-description = "Timer for Vector DB Backup";
-wantedBy = [ "timers.target" ];
-timerConfig = {
-OnCalendar = "*-*-* 22:40:00";
-Persistent = true;
-};
-};
+  systemd.timers.backup-debug-memory = {
+    description = "Timer for Vector DB Backup";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "*-*-* 22:40:00";
+      Persistent = true;
+    };
+  };
   # Fix za Gemini Code Assist (Google-ov kod ne ume sam da kreira temp folder)
   systemd.tmpfiles.rules = [
     "d /tmp/gemini 0777 root root -"
