@@ -50,6 +50,7 @@
     tmux
     gigalixir
     bubblewrap
+    gh
 
     # Sway dodaci
     foot
