@@ -20,6 +20,7 @@
     sqlite-web
     datasette   
     aider-chat
+    nil
 
    # Graficki alati
     inkscape
