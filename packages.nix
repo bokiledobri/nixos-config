@@ -17,6 +17,8 @@
     sqlite
     redis
     rclone
+    sqlite-web
+    datasette   
     aider-chat
 
    # Graficki alati
