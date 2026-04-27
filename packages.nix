@@ -54,6 +54,7 @@
     gigalixir
     bubblewrap
     gh
+    jq
 
     # Sway dodaci
     foot
