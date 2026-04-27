@@ -71,6 +71,9 @@
     gcc
     gnumake
     tree-sitter
+    rustup
+    rust-analyzer
+
     
     # Kodeci
     gst_all_1.gstreamer
