@@ -73,7 +73,6 @@
     gnumake
     tree-sitter
     rustup
-    rust-analyzer
 
     
     # Kodeci
