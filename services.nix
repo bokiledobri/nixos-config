@@ -37,11 +37,11 @@ services.postgresql = {
     path = with pkgs; [ rclone sqlite ];
     script = ''
       # Safely snapshot the SQLite database
-      sqlite3 /home/bojan/.local/share/mrag-mcp/mrag.db".backup /tmp/mrag-backup.db"
+      sqlite3 /home/bojan/.smriti/bokiledobri/memory.lbug".backup /tmp/memory.lbug"
       # Sync to Google Drive
-      rclone --config /home/bojan/.config/rclone/rclone.conf copy /tmp/mrag-backup.db gdrive:/backups
+      rclone --config /home/bojan/.config/rclone/rclone.conf copy /tmp/memory.lbug gdrive:/backups
       # Cleanup
-      rm /tmp/rag-backup.db
+      rm /tmp/memory.lbug
     '';
     serviceConfig = {
       Type = "oneshot";

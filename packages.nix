@@ -21,6 +21,7 @@
     datasette   
     aider-chat
     nil
+    stow
 
    # Graficki alati
     inkscape
