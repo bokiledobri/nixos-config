@@ -58,6 +58,18 @@ services.postgresql = {
       Persistent = true;
     };
   };
+  systemd.user.services.smriti-gateway = {
+    description = "Smriti MCP Gateway (stdio → HTTP on :8765)";
+    wantedBy = [ "default.target" ];
+    after = [ "network.target" ];
+    serviceConfig = {
+      ExecStart = "/home/bojan/.local/bin/smriti-gateway";
+      Restart = "on-failure";
+      RestartSec = 5;
+      EnvironmentFile = "/home/bojan/.config/environment.d/api-keys.conf";
+    };
+  };
+
   # Fix za Gemini Code Assist (Google-ov kod ne ume sam da kreira temp folder)
   systemd.tmpfiles.rules = [
     "d /tmp/gemini 0777 root root -"
