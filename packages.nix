@@ -22,6 +22,7 @@
     aider-chat
     nil
     stow
+    parted
 
    # Graficki alati
     inkscape

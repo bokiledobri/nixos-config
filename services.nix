@@ -67,6 +67,7 @@ services.postgresql = {
       Restart = "on-failure";
       RestartSec = 5;
       EnvironmentFile = "/home/bojan/.config/environment.d/api-keys.conf";
+      Environment = "PATH=/run/current-system/sw/bin:/run/wrappers/bin:/home/bojan/.local/bin:/home/bojan/.nix-profile/bin";
     };
   };
 
