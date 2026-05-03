@@ -91,16 +91,16 @@ services.postgresql = {
   };
 
   systemd.services.codex-relay = {
-    description = "Codex Responses API relay → LiteLLM (port 8090)";
+    description = "Codex Responses API proxy → LiteLLM (port 8090)";
     wantedBy = [ "multi-user.target" ];
     after = [ "network.target" "litellm.service" ];
     requires = [ "litellm.service" ];
     serviceConfig = {
-      ExecStart = "${pkgs.bash}/bin/bash -c 'echo $OPENROUTER_API_KEY | ${pkgs.nodejs}/bin/node /home/bojan/node_modules/@openai/codex-responses-api-proxy/bin/codex-responses-api-proxy.js --port 8090 --upstream-url http://127.0.0.1:11000/v1/responses'";
+      ExecStart = "/home/bojan/.bun/bin/bun run /home/bojan/.local/bin/codex-proxy.js";
       Restart = "on-failure";
       RestartSec = 5;
       User = "bojan";
-      EnvironmentFile = "/home/bojan/.config/environment.d/api-keys.conf";
+      Environment = "HOME=/home/bojan";
     };
   };
 
