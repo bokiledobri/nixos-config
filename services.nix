@@ -3,6 +3,7 @@
   services.avahi = {
     enable = true;
     nssmdns4 = true;
+    openFirewall = true;
   };
 services.postgresql = {
     enable = true;
