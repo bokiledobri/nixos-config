@@ -76,6 +76,34 @@ services.postgresql = {
     };
   };
 
+  systemd.services.litellm = {
+    description = "LiteLLM Proxy (AI gateway, port 11000)";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.litellm}/bin/litellm --config /home/bojan/.config/litellm/config.yaml --host 127.0.0.1 --port 11000";
+      Restart = "on-failure";
+      RestartSec = 5;
+      User = "bojan";
+      EnvironmentFile = "/home/bojan/.config/environment.d/api-keys.conf";
+      Environment = "HOME=/home/bojan";
+    };
+  };
+
+  systemd.services.codex-relay = {
+    description = "Codex Responses API relay → LiteLLM (port 8090)";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network.target" "litellm.service" ];
+    requires = [ "litellm.service" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.bash}/bin/bash -c 'echo $OPENROUTER_API_KEY | ${pkgs.nodejs}/bin/node /home/bojan/node_modules/@openai/codex-responses-api-proxy/bin/codex-responses-api-proxy.js --port 8090 --upstream-url http://127.0.0.1:11000/v1/responses'";
+      Restart = "on-failure";
+      RestartSec = 5;
+      User = "bojan";
+      EnvironmentFile = "/home/bojan/.config/environment.d/api-keys.conf";
+    };
+  };
+
   # Fix za Gemini Code Assist (Google-ov kod ne ume sam da kreira temp folder)
   systemd.tmpfiles.rules = [
     "d /tmp/gemini 0777 root root -"
