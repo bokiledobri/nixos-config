@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 {
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+  };
 services.postgresql = {
     enable = true;
     
