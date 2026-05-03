@@ -57,6 +57,7 @@
     bubblewrap
     gh
     jq
+    litellm
 
     # Sway dodaci
     foot
