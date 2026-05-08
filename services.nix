@@ -39,13 +39,10 @@ services.postgresql = {
     description = "Sync Vector DB to Google Drive via Rclone";
     wants = [ "network-online.target" ];
     after = [ "network-online.target" ];
-    path = with pkgs; [ rclone sqlite ];
+    path = with pkgs; [ rclone ];
     script = ''
-      # Safely snapshot the SQLite database
-      sqlite3 /home/bojan/.smriti/bokiledobri/memory.lbug ".backup /tmp/memory.lbug"
-      # Sync to Google Drive
+      cp /home/bojan/.smriti/bokiledobri/memory.lbug /tmp/memory.lbug
       rclone --config /home/bojan/.config/rclone/rclone.conf copy /tmp/memory.lbug gdrive:/backups
-      # Cleanup
       rm /tmp/memory.lbug
     '';
     serviceConfig = {
@@ -59,7 +56,7 @@ services.postgresql = {
     description = "Timer for Vector DB Backup";
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnCalendar = "*-*-* 22:40:00";
+      OnCalendar = "*-*-* 04:00:00";
       Persistent = true;
     };
   };
