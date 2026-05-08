@@ -42,7 +42,7 @@ services.postgresql = {
     path = with pkgs; [ rclone sqlite ];
     script = ''
       # Safely snapshot the SQLite database
-      sqlite3 /home/bojan/.smriti/bokiledobri/memory.lbug".backup /tmp/memory.lbug"
+      sqlite3 /home/bojan/.smriti/bokiledobri/memory.lbug ".backup /tmp/memory.lbug"
       # Sync to Google Drive
       rclone --config /home/bojan/.config/rclone/rclone.conf copy /tmp/memory.lbug gdrive:/backups
       # Cleanup
